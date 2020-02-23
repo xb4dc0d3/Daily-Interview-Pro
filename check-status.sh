@@ -1,3 +1,6 @@
 #!/usr/bin/bash
-echo Problems still not solved: $(git ls-files --exclude *[^.md] | wc -l)
-echo Total all problems: $(ls --ignore={"*env","*.gitignore","*.md","*.sh"} | wc -l)
+all=$(ls --ignore={"*env","*.gitignore","*.md","*.sh"} | wc -l)
+solved=$(git ls-files --cached | wc -l)
+echo Problems solved: $solved
+echo Problems not solved : $(($all-$solved))
+echo Total all problems: $all
